@@ -6,7 +6,6 @@
     <div ng-repeat="x in bigArray | startFrom:currentPage*pageSize | limitTo:pageSize">
         <p>{{x.first_name}} {{x.last_name}}</p>
     </div>
-    
     <button ng-disabled="quintetIteration == 0" ng-click="previousQuintet()">Previous 5</button>
     <span><button ng-disabled="(quintetIteration+$index) >= numberOfPagesCalc()" ng-click="pageNo($index+quintetIteration)" ng-repeat="i in buttonIterationCount(buttonCount) track by $index+quintetIteration">{{$index+1+quintetIteration}}</button></span>
     <button ng-disabled="(quintetIteration+5) >= numberOfPagesCalc()" ng-click="nextQuintet()">Next 5</button>

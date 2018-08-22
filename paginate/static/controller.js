@@ -1,34 +1,31 @@
 (app.controller("paginateController", ['$scope', function($scope){
     //View Binded Variables
     $scope.currentPage  = 0;
+    // Redundant. Check and make Obsolete
     $scope.currentPageSelectorCount =0;
     $scope.pageSize     = 10;
+    //Make Dynamic
     $scope.quintetIteration = 0;
+    //Check Dynamic
     $scope.buttonCount =5;
 
     //[Math.floor] Returns an integer rounded down from decimal(if result)
-    $scope.numberOfPagesCalc  = function(){return Math.ceil(
-        $scope.bigArray.length/$scope.pageSize
-      );};
+    $scope.numberOfPagesCalc  = function(){return Math.ceil($scope.bigArray.length/$scope.pageSize);};
     
-
+    //Check and Make Obsolete
     $scope.buttonIterationCount = function(n){return new Array(n);};
     //Button Click Events
       //Basic Events
-    $scope.previousPage = function(){$scope.currentPage --;};
-    $scope.nextPage     = function(){$scope.currentPage ++;};
-    $scope.firstPage    = function(){$scope.currentPage = 0};
-    $scope.lastPage     = function(){$scope.currentPage = $scope.numberOfPagesCalc();};
+    // $scope.previousPage = function(){$scope.currentPage --;};
+    // $scope.nextPage     = function(){$scope.currentPage ++;};
+    // $scope.firstPage    = function(){$scope.currentPage = 0};
+    // $scope.lastPage     = function(){$scope.currentPage = $scope.numberOfPagesCalc();};
 
-    $scope.pageNo  = function(pageNumber){$scope.currentPage = pageNumber;};
-    $scope.previousQuintet =function(){
-      if ($scope.quintetIteration !== 0) 
-      $scope.quintetIteration -=5;};
-    $scope.nextQuintet  = function(){
-      if(($scope.quintetIteration+5) < $scope.numberOfPagesCalc())
-        $scope.quintetIteration +=5;
-
-    };
+    //Checks Dynamic page number to initialize into view
+    //Work on PEP8 compliance
+    $scope.pageNo         = function(pageNumber){$scope.currentPage = pageNumber;};
+    $scope.previousQuintet= function(){if($scope.quintetIteration !== 0){$scope.quintetIteration -=5;};};
+    $scope.nextQuintet    = function(){if(($scope.quintetIteration+5) < $scope.numberOfPagesCalc()){$scope.quintetIteration +=5;};};
 
     //Test Data Set, Format: Array
     $scope.bigArray = 
